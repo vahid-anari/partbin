@@ -185,3 +185,39 @@ module veml7700_pkg(rot = 0) {
         color(c_tin()) for (x = [-2.5, 0, 2.5], s = [-1, 1]) translate([x - 0.4, s * 0.75 - 0.3, 0]) cube([0.8, 0.6, 0.12]);
     }
 }
+
+// A right-angle 2.54 mm header with n pins along y, soldered on the surface
+// at z = 0 (pads at x = y = 0 ... centred), pins pointing towards +x and
+// sticking out `reach` mm past the pad row. Mirror it for -x.
+module pin_header_angle(n, reach = 7, below = 2.6) {
+    color(c_plastic()) translate([0.3, -n * 1.27, 0]) cube([2.54, n * 2.54, 2.54]);
+    color(c_gold()) for (i = [0:n - 1]) translate([0, (i - (n - 1) / 2) * 2.54, 0]) {
+        translate([-0.32, -0.32, -below]) cube([0.64, 0.64, below + 1.59]);
+        translate([-0.32, -0.32, 0.63]) cube([reach + 0.32, 0.64, 0.64]);
+    }
+}
+
+// SOIC chip (8, 16, 20, 24 legs...), long side along x. w = body width.
+module soic(legs = 16, w = 3.9, h = 1.6, pitch = 1.27, rot = 0) {
+    n = legs / 2;  l = n * pitch + 0.4;
+    rotate([0, 0, rot]) {
+        color(c_chip()) translate([-l / 2, -w / 2, 0.1]) cube([l, w, h - 0.1]);
+        color(c_tin()) for (s = [-1, 1], i = [0:n - 1])
+            translate([(i - (n - 1) / 2) * pitch - 0.2, s < 0 ? -w / 2 - 1.0 : w / 2, 0]) cube([0.4, 1.0, 0.25]);
+    }
+}
+
+// Electrolytic capacitor (can standing up).
+module elco(d = 5, h = 7, col = [0.1, 0.1, 0.45]) {
+    color(col) cylinder(d = d, h = h - 0.3, $fn = 32);
+    color(c_tin()) translate([0, 0, h - 0.3]) cylinder(d = d - 0.6, h = 0.3, $fn = 32);
+}
+
+// Small blue trimmer potentiometer (3362-style) with its slot on top.
+module trimpot(size = 6.6, h = 4.5) {
+    color([0.15, 0.35, 0.85]) translate([-size / 2, -size / 2, 0]) cube([size, size, h - 0.6]);
+    color([0.9, 0.9, 0.9]) translate([0, 0, h - 0.6]) difference() {
+        cylinder(d = size * 0.6, h = 0.6, $fn = 24);
+        translate([-size * 0.35, -0.3, 0.2]) cube([size * 0.7, 0.6, 1]);
+    }
+}
