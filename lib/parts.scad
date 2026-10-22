@@ -331,3 +331,42 @@ module tact6(h = 5.0, cap = [0.1, 0.1, 0.1]) {
     color(cap) translate([0, 0, 3.7]) cylinder(d = 3.5, h = max(0.3, h - 3.7), $fn = 24);
     color(c_tin()) for (sx = [-1, 1], sy = [-1, 1]) translate([sx * 3.25 - 0.3, sy * 2.25 - 0.15, -3]) cube([0.6, 0.3, 3]);
 }
+
+// Big SMD power inductor (CDRH-style, square-ish with rounded corners).
+module power_inductor_big(size = 12.0, h = 7.0) {
+    color([0.15, 0.15, 0.15]) linear_extrude(h - 0.4) offset(1.5) offset(-1.5) square(size, center = true);
+    color([0.45, 0.45, 0.45]) translate([0, 0, h - 0.4]) cylinder(d = size * 0.85, h = 0.4, $fn = 40);
+}
+
+// TO-263 (D2PAK) regulator lying on its tab.
+module to263(rot = 0) {
+    rotate([0, 0, rot]) {
+        color(c_tin()) translate([-5.1, -4.6, 0]) cube([10.2, 9.2, 0.3]);
+        color(c_chip()) translate([-5.1, -3.6, 0.3]) cube([10.2, 8.2, 4.2]);
+        color(c_tin()) for (i = [-2:2]) translate([i * 1.7 - 0.4, -7.6, 0]) cube([0.8, 3.2, 0.5]);
+    }
+}
+
+// Screw terminal block, `n` ways at `pitch` (5.0 or 5.08), wires enter from -y.
+module screw_terminal(n = 2, pitch = 5.0, h = 10.0, col = [0.1, 0.35, 0.85]) {
+    w = n * pitch;
+    color(col) difference() {
+        translate([-w / 2, -3.75, 0]) cube([w, 7.5, h]);
+        for (i = [0:n - 1]) {
+            translate([-w / 2 + pitch / 2 + i * pitch, 0.8, h - 3]) cylinder(d = 3.2, h = 4, $fn = 20);
+            translate([-w / 2 + pitch / 2 + i * pitch - 1.5, -4, 1.5]) cube([3, 3, 3]);
+        }
+    }
+    color(c_tin()) for (i = [0:n - 1]) translate([-w / 2 + pitch / 2 + i * pitch, 0.8, h - 2.8]) difference() {
+        cylinder(d = 2.8, h = 0.5, $fn = 20); translate([-1.4, -0.3, 0.2]) cube([2.8, 0.6, 1]);
+    }
+}
+
+// USB-A male plug (the metal part), pointing +y from y = 0.
+module usb_a_male(len = 12.0) {
+    color(c_tin()) difference() {
+        translate([-6, 0, 0]) cube([12, len, 4.5]);
+        translate([-5.6, 0.5, 0.4]) cube([11.2, len, 3.7]);
+    }
+    color([0.92, 0.92, 0.92]) translate([-5, 0.5, 0.4]) cube([10, len - 1, 1.8]);
+}
