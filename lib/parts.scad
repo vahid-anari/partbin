@@ -16,6 +16,8 @@ function c_chip() = [0.13, 0.13, 0.14];
 function c_res() = [0.10, 0.10, 0.10];
 function c_cap() = [0.72, 0.58, 0.40];
 function c_plastic() = [0.10, 0.10, 0.10];
+function c_pcb_blue() = [0.06, 0.30, 0.66];
+function c_pcb_purple() = [0.40, 0.12, 0.52];
 
 // ---------------------------------------------------------------------- PCB
 // Rectangle of `size` = [x, y], thickness t, from z = 0 up to z = t.
@@ -145,4 +147,41 @@ module usb_c(w = 8.94, h = 3.26, len = 7.35) {
 module pin_header(n, pitch = 2.54, pin = 11.5, spacer = 2.5, below = 3.0) {
     color(c_plastic()) translate([-1.27, -n * pitch / 2, 0]) cube([2.54, n * pitch, spacer]);
     color(c_gold()) for (i = [0:n - 1]) translate([-0.32, (i - (n - 1) / 2) * pitch - 0.32, -below]) cube([0.64, 0.64, pin]);
+}
+
+// ---------------------------------------------------------- more SMD chips
+// Small IC with legs on its two short sides (x), n legs per side.
+// Used for SOT-363 (SC-70-6), WSOF6 (BH1750) and similar.
+module smd_ic(body = [2.0, 1.25, 0.9], n = 3, pitch = 0.65, leg = 0.35, rot = 0) {
+    rotate([0, 0, rot]) {
+        color(c_chip()) translate([-body[0] / 2, -body[1] / 2, 0.05]) cube([body[0], body[1], body[2] - 0.05]);
+        color(c_tin()) for (s = [-1, 1], i = [0:n - 1])
+            translate([s * (body[0] / 2 + leg / 2) - leg / 2 - (s < 0 ? 0 : 0), (i - (n - 1) / 2) * pitch - 0.12, 0]) cube([leg, 0.24, 0.15]);
+    }
+}
+
+// Resistor array (4 x 0603 in one 1206-size body), pads on the long sides.
+module resistor_array(rot = 0) {
+    rotate([0, 0, rot]) {
+        color(c_res()) translate([-1.6, -0.8, 0]) cube([3.2, 1.6, 0.45]);
+        color(c_tin()) for (s = [-1, 1], i = [0:3]) translate([(i - 1.5) * 0.8 - 0.2, s * 0.8 - (s < 0 ? 0.3 : 0), 0]) cube([0.4, 0.3, 0.45]);
+    }
+}
+
+// Bosch BME280 / BMP280: a metal lid with a vent hole. size [x, y].
+module bosch_can(size = [2.5, 2.5], h = 0.93, rot = 0) {
+    rotate([0, 0, rot]) {
+        color(c_tin()) translate([-size[0] / 2, -size[1] / 2, 0]) cube([size[0], size[1], h]);
+        color([0.2, 0.2, 0.2]) translate([-size[0] / 2 + 0.45, size[1] / 2 - 0.45, h]) cylinder(d = 0.35, h = 0.01, $fn = 12);
+    }
+}
+
+// Vishay VEML7700: a clear block (6.8 x 2.35 x 3.0) with the chip inside,
+// long side along x.
+module veml7700_pkg(rot = 0) {
+    rotate([0, 0, rot]) {
+        color([0.92, 0.92, 0.96, 0.55]) translate([-3.4, -1.175, 0.1]) cube([6.8, 2.35, 2.9]);
+        color([0.45, 0.35, 0.55]) translate([-0.4, -0.4, 1.6]) cube([0.8, 0.8, 0.3]);
+        color(c_tin()) for (x = [-2.5, 0, 2.5], s = [-1, 1]) translate([x - 0.4, s * 0.75 - 0.3, 0]) cube([0.8, 0.6, 0.12]);
+    }
 }

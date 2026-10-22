@@ -48,11 +48,21 @@ Opened on its own, each module file shows the board in its holder behind a piece
 | Module | File | Measured |
 |---|---|---|
 | ESP32-C3 Super Mini | [`modules/esp32_c3_supermini.scad`](modules/esp32_c3_supermini.scad) | yes |
+| GY-BME280 / GY-BMP280 (purple, 6 pins) | [`modules/gy_bme280.scad`](modules/gy_bme280.scad) | not yet: typical, from a photo |
+| GY-302 BH1750 light sensor | [`modules/gy302_bh1750.scad`](modules/gy302_bh1750.scad) | not yet: typical, from a photo |
+| VEML7700 light sensor (Adafruit layout) | [`modules/veml7700.scad`](modules/veml7700.scad) | from Adafruit's design files; thickness typical |
+
+Sensor boards come with posts for their holes (`_holder`, pegs or screws) and a cutout for the lid above them: a window over a light sensor (`_window`), air slots over the BME280 (`_vents`).
+
+| | | |
+|---|---|---|
+| ![BME280](images/gy_bme280.png) | ![BH1750](images/gy302_bh1750.png) | ![VEML7700](images/veml7700.png) |
 
 ## Files
 
 - `modules/`: one file per module, its measured numbers at the top.
 - `lib/parts.scad`: the shared part shapes (PCB, SMD resistors and capacitors, chips, crystal, buttons, USB-C, pin headers).
+- `lib/breakout.scad`: shared pieces for small breakout boards (board with holes and a pin row, mounts, light window, air vents).
 - `images/`: pictures, made by `tools/render.sh` (needs OpenSCAD).
 
 ## Support
