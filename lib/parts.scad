@@ -274,3 +274,38 @@ module drum_inductor(d = 3.8, h = 2.6) {
     color([0.12, 0.12, 0.12]) { cylinder(d = d, h = 0.4, $fn = 32); translate([0, 0, h - 0.4]) cylinder(d = d, h = 0.4, $fn = 32); }
     color([0.72, 0.38, 0.15]) translate([0, 0, 0.4]) cylinder(d = d * 0.85, h = h - 0.8, $fn = 32);
 }
+
+// 3296-style multi-turn trimmer (blue box with a brass screw on top).
+module trimpot_3296(size = [9.5, 4.8], h = 10.0) {
+    color([0.15, 0.35, 0.85]) translate([-size[0] / 2, -size[1] / 2, 0]) cube([size[0], size[1], h]);
+    color([0.85, 0.7, 0.3]) translate([-size[0] / 2 + 1.5, 0, h]) cylinder(d = 2.2, h = 0.8, $fn = 16);
+}
+
+// TO-92S part (hall sensor 49E, IR receiver...) standing on its legs
+// (leg_h tall), flat face towards -y; bent = true lays it over towards +y.
+module to92s(leg_h = 6, bent = false) {
+    module body() {
+        color([0.1, 0.1, 0.1]) intersection() {
+            translate([0, 0.2, 0]) cylinder(d = 4.0, h = 3.0, $fn = 32);
+            translate([-2, -0.8, 0]) cube([4, 2.4, 3]);
+        }
+    }
+    if (bent) {
+        color(c_tin()) for (x = [-1.27, 0, 1.27]) translate([x - 0.2, 0, 0]) cube([0.4, leg_h, 0.4]);
+        translate([0, leg_h + 3.0, 0.8]) rotate([90, 0, 0]) body();
+    } else {
+        color(c_tin()) for (x = [-1.27, 0, 1.27]) translate([x - 0.2, -0.2, 0]) cube([0.4, 0.4, leg_h]);
+        translate([0, 0, leg_h]) body();
+    }
+}
+
+// EC11 rotary encoder: metal body, threaded bushing and a D-shaft.
+module ec11(shaft = 20, bushing = 7) {
+    color([0.8, 0.8, 0.82]) translate([-6, -6.6, 0]) cube([12, 13.2, 6.5]);
+    color([0.2, 0.2, 0.2]) translate([-5.5, -6.2, 6.5]) cube([11, 12.4, 0.3]);
+    color([0.75, 0.75, 0.78]) translate([0, 0, 6.5]) cylinder(d = 7, h = bushing, $fn = 32);
+    color([0.85, 0.85, 0.88]) translate([0, 0, 6.5]) difference() {
+        cylinder(d = 6, h = shaft, $fn = 32);
+        translate([1.5, -3, shaft - 10]) cube([3, 6, 11]);
+    }
+}

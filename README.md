@@ -54,6 +54,12 @@ Opened on its own, each module file shows the board in its holder behind a piece
 | GY-BME280 / GY-BMP280 (purple, 6 pins) | [`modules/gy_bme280.scad`](modules/gy_bme280.scad) | not yet: typical, from a photo |
 | GY-302 BH1750 light sensor | [`modules/gy302_bh1750.scad`](modules/gy302_bh1750.scad) | not yet: typical, from a photo |
 | VEML7700 light sensor (Adafruit layout) | [`modules/veml7700.scad`](modules/veml7700.scad) | from Adafruit's design files; thickness typical |
+| INA226 current/power monitor (CJMCU-226) | [`modules/ina226_cjmcu226.scad`](modules/ina226_cjmcu226.scad) | not yet: from a photo |
+| ADS1115 16-bit ADC (Adafruit layout) | [`modules/ads1115.scad`](modules/ads1115.scad) | not yet: typical |
+| VL53L0X ToF distance sensor (GY-530, purple) | [`modules/vl53l0x_gy530.scad`](modules/vl53l0x_gy530.scad) | not yet: typical |
+| KY-024 linear hall sensor | [`modules/ky024_hall.scad`](modules/ky024_hall.scad) | not yet: from a photo |
+| TTP223 touch button | [`modules/ttp223_touch.scad`](modules/ttp223_touch.scad) | not yet: typical |
+| KY-040 rotary encoder (EC11), with the knob | [`modules/ky040_encoder.scad`](modules/ky040_encoder.scad) | not yet: typical |
 | MAX7219 FC-16 4-in-1 LED matrix, green (one or more end to end) | [`modules/max7219_fc16.scad`](modules/max7219_fc16.scad) | not yet: typical |
 | MAX7219 single 8x8 LED matrix (DIP kit), green | [`modules/max7219_8x8.scad`](modules/max7219_8x8.scad) | not yet: typical |
 | 1.8" TFT 128x160 ST7735 (red, microSD) *(not one of mine)* | [`modules/st7735_18.scad`](modules/st7735_18.scad) | not yet: typical |
@@ -85,6 +91,8 @@ Sensor boards come with posts for their holes (`_holder`, pegs or screws) and a 
 | ![7-segment](images/seg7_4digit_036_demo.png) | ![Power bank board](images/powerbank_5v2a_typec.png) | ![2S charger](images/charger_2s_typec.png) |
 | ![Mini charger + boost](images/charger_mini_typec_boost.png) | ![Mini boost](images/boost_mini_5v3a.png) | ![ESP32 DevKitC](images/esp32_devkitc_38.png) |
 | ![Pico clone](images/pico_rp2040_typec.png) | ![Pro Micro](images/pro_micro.png) | ![RP2040 Pro Micro](images/pro_micro_rp2040.png) |
+| ![INA226](images/ina226_cjmcu226.png) | ![ADS1115](images/ads1115.png) | ![VL53L0X](images/vl53l0x_gy530.png) |
+| ![KY-024](images/ky024_hall.png) | ![TTP223](images/ttp223_touch.png) | ![KY-040](images/ky040_encoder_demo.png) |
 
 ## Files
 
