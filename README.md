@@ -58,6 +58,8 @@ Opened on its own, each module file shows the board in its holder behind a piece
 | 0.91" OLED 128x32 SSD1306 | [`modules/ssd1306_091.scad`](modules/ssd1306_091.scad) | not yet: typical |
 | LCD1602, with or without the I2C backpack | [`modules/lcd1602.scad`](modules/lcd1602.scad) | not yet: from a manufacturer's drawing |
 | TM1637 4-digit 7-segment | [`modules/tm1637_4digit.scad`](modules/tm1637_4digit.scad) | not yet: typical |
+| TP4056 charger, USB-C or micro-USB, with or without protection | [`modules/tp4056.scad`](modules/tp4056.scad) | not yet: typical |
+| IP5306 charge/discharge board (MH-CD42) | [`modules/ip5306_mhcd42.scad`](modules/ip5306_mhcd42.scad) | not yet: typical |
 
 Displays face up like everything else, so a case with a front panel turns them to face it. Each comes with a `_window` for the front (the lit area, widening outwards) and a holder: posts for boards with holes, or `edge_holder` (a ledge under the edges and low walls) for boards without.
 
@@ -68,7 +70,8 @@ Sensor boards come with posts for their holes (`_holder`, pegs or screws) and a 
 | ![BME280](images/gy_bme280.png) | ![BH1750](images/gy302_bh1750.png) | ![VEML7700](images/veml7700.png) |
 | ![FC-16](images/max7219_fc16.png) | ![8x8](images/max7219_8x8.png) | ![LCD1602](images/lcd1602.png) |
 | ![ST7735](images/st7735_18.png) | ![ST7789](images/st7789_13.png) | ![OLED](images/ssd1306_091.png) |
-| ![TM1637](images/tm1637_4digit.png) | ![LCD1602 with I2C backpack](images/lcd1602_backpack.png) | |
+| ![TM1637](images/tm1637_4digit.png) | ![LCD1602 with I2C backpack](images/lcd1602_backpack.png) | ![TP4056](images/tp4056.png) |
+| ![IP5306](images/ip5306_mhcd42.png) | | |
 
 ## Files
 

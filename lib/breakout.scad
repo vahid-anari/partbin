@@ -88,3 +88,19 @@ module bo_demo(size, mount_h, lid_z, lid_t = 2) {
         children(2);
     }
 }
+
+// ------------------------------------------------------------- USB cutouts
+// A hole for a USB socket in the wall it faces. The socket's front face is
+// at `at` = [x, y], its centre `zc` above the board's underside, and it points
+// in direction `rot` (0 = +y, 90 = -x, 180 = -y, 270 = +x). The wall's inside
+// face is `gap` in front of the socket and it is `wall` thick. `size` is the
+// socket's [width, height]; from the outside a wider recess (`plug`) leaves
+// `lip` mm of wall so the cable's plug goes all the way in.
+module bo_usb_cutout(at, zc, rot = 0, size = [8.94, 3.26], wall = 2, gap = 0, clear = 0.3,
+                     plug = [12.4, 6.6], lip = 0.8) {
+    module stadium(ww, hh) hull() for (m = [-1, 1]) translate([m * (ww - hh) / 2, 0]) circle(d = hh, $fn = 32);
+    translate([at[0], at[1], zc]) rotate([0, 0, rot]) {
+        translate([0, -0.5, 0]) rotate([-90, 0, 0]) linear_extrude(gap + wall + 1.5) stadium(size[0] + 2 * clear, size[1] + 2 * clear);
+        if (lip < wall) translate([0, gap + lip, 0]) rotate([-90, 0, 0]) linear_extrude(wall - lip + 1) stadium(plug[0], plug[1]);
+    }
+}

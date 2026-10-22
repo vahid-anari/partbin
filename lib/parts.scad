@@ -221,3 +221,31 @@ module trimpot(size = 6.6, h = 4.5) {
         translate([-size * 0.35, -0.3, 0.2]) cube([size * 0.7, 0.6, 1]);
     }
 }
+
+// Micro-USB B receptacle lying on the board, front face at y = 0 pointing
+// towards +y (like usb_c).
+module usb_micro(w = 7.5, h = 2.5, len = 5.0) {
+    color(c_tin()) difference() {
+        hull() {
+            translate([-w / 2, -len, 0.8]) cube([w, len, h - 0.8]);
+            translate([-w / 2 + 0.8, -len, 0]) cube([w - 1.6, len, h]);
+        }
+        translate([-w / 2 + 0.4, -len + 1, 0.4]) cube([w - 0.8, len, h - 0.8]);
+    }
+    color(c_plastic()) translate([-(w - 3) / 2, -len + 1, h / 2 - 0.2]) cube([w - 3, len - 1.3, 0.5]);
+    color(c_tin()) for (s = [-1, 1]) translate([s * (w / 2 + 0.3) - 0.5, -len + 0.5, 0]) cube([1, 1.6, 0.15]);
+}
+
+// SMD power inductor (CD54-style): a black drum with a grey top.
+module power_inductor(size = 5.2, h = 3.0) {
+    color([0.15, 0.15, 0.15]) translate([-size / 2, -size / 2, 0]) cube([size, size, h - 0.3]);
+    color([0.45, 0.45, 0.45]) translate([0, 0, h - 0.3]) cylinder(d = size * 0.9, h = 0.3, $fn = 32);
+}
+
+// A solder pad (rectangular, with an optional hole).
+module pad(size = [2.4, 2.4], hole = 0, t = 1.6) {
+    color(c_gold()) for (z = [-0.02, t]) translate([0, 0, z]) difference() {
+        translate([-size[0] / 2, -size[1] / 2, 0]) cube([size[0], size[1], 0.02]);
+        if (hole > 0) translate([0, 0, -1]) cylinder(d = hole, h = 2, $fn = 16);
+    }
+}
