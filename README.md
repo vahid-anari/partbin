@@ -62,6 +62,10 @@ Opened on its own, each module file shows the board in its holder behind a piece
 | 1.3" OLED 128x64 SH1106 (I2C) | [`modules/sh1106_13.scad`](modules/sh1106_13.scad) | not yet: typical |
 | Bare 4-digit 7-segment display, 0.36" (red, green, blue, white) | [`modules/seg7_4digit_036.scad`](modules/seg7_4digit_036.scad) | not yet: typical |
 | TP4056 charger, USB-C (mine) or micro-USB, with or without protection | [`modules/tp4056.scad`](modules/tp4056.scad) | not yet: typical |
+| Type-C 5V 2A charge/boost (power bank) board, 25 x 20, USB-A on the back | [`modules/powerbank_5v2a_typec.scad`](modules/powerbank_5v2a_typec.scad) | from the listing |
+| Type-C to 8.4 V boost charger for 2S packs, 39 x 18 | [`modules/charger_2s_typec.scad`](modules/charger_2s_typec.scad) | from the listing |
+| Mini Li-ion charger + 5 V boost, one USB-C, 15.8 x 12 | [`modules/charger_mini_typec_boost.scad`](modules/charger_mini_typec_boost.scad) | from the listing |
+| Mini 3.7 V to 5 V 3 A boost board | [`modules/boost_mini_5v3a.scad`](modules/boost_mini_5v3a.scad) | not yet: from a photo |
 | IP5306 charge/discharge board (MH-CD42) *(not one of mine)* | [`modules/ip5306_mhcd42.scad`](modules/ip5306_mhcd42.scad) | not yet: typical |
 
 Displays face up like everything else, so a case with a front panel turns them to face it. Each comes with a `_window` for the front (the lit area, widening outwards) and a holder: posts for boards with holes, or `edge_holder` (a ledge under the edges and low walls) for boards without.
@@ -75,7 +79,8 @@ Sensor boards come with posts for their holes (`_holder`, pegs or screws) and a 
 | ![ST7735](images/st7735_18.png) | ![ST7789](images/st7789_13.png) | ![OLED](images/ssd1306_091.png) |
 | ![TM1637](images/tm1637_4digit.png) | ![LCD1602 with I2C backpack](images/lcd1602_backpack.png) | ![TP4056](images/tp4056.png) |
 | ![IP5306](images/ip5306_mhcd42.png) | ![0.96 TFT](images/st7735_096.png) | ![1.3 OLED](images/sh1106_13.png) |
-| ![7-segment](images/seg7_4digit_036_demo.png) | | |
+| ![7-segment](images/seg7_4digit_036_demo.png) | ![Power bank board](images/powerbank_5v2a_typec.png) | ![2S charger](images/charger_2s_typec.png) |
+| ![Mini charger + boost](images/charger_mini_typec_boost.png) | ![Mini boost](images/boost_mini_5v3a.png) | |
 
 ## Files
 

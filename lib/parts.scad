@@ -249,3 +249,28 @@ module pad(size = [2.4, 2.4], hole = 0, t = 1.6) {
         if (hole > 0) translate([0, 0, -1]) cylinder(d = hole, h = 2, $fn = 16);
     }
 }
+
+// USB-A female socket lying on the board, front face at y = 0 pointing +y.
+module usb_a_female(w = 13.1, h = 5.7, len = 10.0) {
+    color(c_tin()) difference() {
+        translate([-w / 2, -len, 0]) cube([w, len, h]);
+        translate([-w / 2 + 0.4, -len + 1, 0.4]) cube([w - 0.8, len, h - 0.8]);
+    }
+    color([0.92, 0.92, 0.92]) translate([-w / 2 + 1.2, -len + 1, h / 2 - 0.2]) cube([w - 2.4, len - 1.5, 1.8]);
+    color(c_tin()) for (s = [-1, 1]) translate([s * (w / 2 + 0.2) - 0.4, -len + 2, -2]) cube([0.8, 0.5, 2.5]);
+}
+
+// SMA/SMB diode (black body, grey stripe at the cathode end), long side along x.
+module sma_diode(size = [4.3, 2.6, 2.1], rot = 0) {
+    rotate([0, 0, rot]) {
+        color(c_chip()) translate([-size[0] / 2 + 0.5, -size[1] / 2, 0]) cube([size[0] - 1, size[1], size[2]]);
+        color([0.6, 0.6, 0.6]) translate([size[0] / 2 - 1.2, -size[1] / 2, size[2]]) cube([0.5, size[1], 0.01]);
+        color(c_tin()) for (s = [-1, 1]) translate([s * (size[0] / 2 - 0.3) - 0.5, -0.8, 0]) cube([1.0, 1.6, 0.3]);
+    }
+}
+
+// Small drum inductor (CD32/CD43): a black core wound with copper wire.
+module drum_inductor(d = 3.8, h = 2.6) {
+    color([0.12, 0.12, 0.12]) { cylinder(d = d, h = 0.4, $fn = 32); translate([0, 0, h - 0.4]) cylinder(d = d, h = 0.4, $fn = 32); }
+    color([0.72, 0.38, 0.15]) translate([0, 0, 0.4]) cylinder(d = d * 0.85, h = h - 0.8, $fn = 32);
+}

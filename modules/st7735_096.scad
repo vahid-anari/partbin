@@ -64,8 +64,6 @@ module st7735_096(detail = true, headers = "none") {
         }
         // pin names on the back (the front has no room between the pins and the glass)
         for (i = [0:7]) bo_under((i - 3.5) * 2.54, pins_y - 1.6) silk(pins[i], 0.55, "left", rot = 90);
-        if (false) {
-        }
     }
     bo_headers(8, 0, pins_y, b_t, headers);
 }
