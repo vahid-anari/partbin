@@ -48,6 +48,9 @@ Opened on its own, each module file shows the board in its holder behind a piece
 | Module | File | Measured |
 |---|---|---|
 | ESP32-C3 Super Mini | [`modules/esp32_c3_supermini.scad`](modules/esp32_c3_supermini.scad) | yes |
+| ESP32-DevKitC V4, 38 pins, USB-C (WROOM-32D or -32U) | [`modules/esp32_devkitc_38.scad`](modules/esp32_devkitc_38.scad) | from the seller's drawing |
+| RP2040 Pico clone, black, USB-C, 16 MB (Pico footprint) | [`modules/pico_rp2040_typec.scad`](modules/pico_rp2040_typec.scad) | Pico drawing; USB-C typical |
+| Pro Micro, USB-C: ATmega32U4 or RP2040 | [`modules/pro_micro.scad`](modules/pro_micro.scad) | not yet: typical |
 | GY-BME280 / GY-BMP280 (purple, 6 pins) | [`modules/gy_bme280.scad`](modules/gy_bme280.scad) | not yet: typical, from a photo |
 | GY-302 BH1750 light sensor | [`modules/gy302_bh1750.scad`](modules/gy302_bh1750.scad) | not yet: typical, from a photo |
 | VEML7700 light sensor (Adafruit layout) | [`modules/veml7700.scad`](modules/veml7700.scad) | from Adafruit's design files; thickness typical |
@@ -80,7 +83,8 @@ Sensor boards come with posts for their holes (`_holder`, pegs or screws) and a 
 | ![TM1637](images/tm1637_4digit.png) | ![LCD1602 with I2C backpack](images/lcd1602_backpack.png) | ![TP4056](images/tp4056.png) |
 | ![IP5306](images/ip5306_mhcd42.png) | ![0.96 TFT](images/st7735_096.png) | ![1.3 OLED](images/sh1106_13.png) |
 | ![7-segment](images/seg7_4digit_036_demo.png) | ![Power bank board](images/powerbank_5v2a_typec.png) | ![2S charger](images/charger_2s_typec.png) |
-| ![Mini charger + boost](images/charger_mini_typec_boost.png) | ![Mini boost](images/boost_mini_5v3a.png) | |
+| ![Mini charger + boost](images/charger_mini_typec_boost.png) | ![Mini boost](images/boost_mini_5v3a.png) | ![ESP32 DevKitC](images/esp32_devkitc_38.png) |
+| ![Pico clone](images/pico_rp2040_typec.png) | ![Pro Micro](images/pro_micro.png) | ![RP2040 Pro Micro](images/pro_micro_rp2040.png) |
 
 ## Files
 
