@@ -1,17 +1,36 @@
 #!/bin/sh
-# Pictures of every module into images/:  tools/render.sh [module ...]
-# Each picture is framed to fit (--viewall). Needs OpenSCAD (and xvfb-run on Linux without a screen).
+# Pictures and the 3D file (binary STL) of every module, into its own folder:
+#
+#   tools/render.sh                  all modules, pictures and STL
+#   tools/render.sh tp4056 lcd1602   only these
+#   PICS=0 tools/render.sh ...       only the STL
+#   STL=0 tools/render.sh ...        only the pictures
+#
+# Each picture is framed to fit (--viewall). Needs OpenSCAD (and xvfb-run on
+# Linux without a screen). After it, run tools/make_readmes.py.
 cd "$(dirname "$0")/.."
-mkdir -p images
 run() { if command -v xvfb-run >/dev/null && [ -z "$DISPLAY" ]; then xvfb-run -a "$@"; else "$@"; fi; }
-shot() {  # name, camera (translate x,y,z, rotate x,y,z, distance), show
-  run openscad -q --imgsize=1600,1200 --colorscheme=Tomorrow --projection=p \
-      --autocenter --viewall --camera="$2" -D "show=\"$3\"" -o "images/$1.png" "modules/$m.scad"
-}
-mods=${*:-$(cd modules && ls *.scad | sed 's/\.scad$//')}
+# files holding a family of parts: their STL shows the whole family (show = "demo")
+families="converters batteries panel_parts ws2812_boards usbc_breakouts"
+mods=${*:-$(ls modules)}
 for m in $mods; do
-  shot "$m"          0,0,0,50,0,30,95     board
-  shot "${m}_bottom" 0,0,0,230,0,200,90   board
-  shot "${m}_holder" 0,-1,0,50,0,20,80    holder
-  shot "${m}_demo"   0,2,0,55,0,210,110   demo
+  f="modules/$m/$m.scad"
+  [ -f "$f" ] || { echo "no $f"; continue; }
+  shot() {  # name, camera (translate x,y,z, rotate x,y,z, distance), show
+    run openscad -q --imgsize=1600,1200 --colorscheme=Tomorrow --projection=p \
+        --autocenter --viewall --camera="$2" -D "show=\"$3\"" -o "modules/$m/$1.png" "$f"
+  }
+  if [ "${PICS:-1}" = 1 ]; then
+    case " $families " in
+      *" $m "*) shot "$m" 0,0,0,50,0,30,95 demo ;;
+      *) shot "$m"          0,0,0,50,0,30,95     board
+         shot "${m}_bottom" 0,0,0,230,0,200,90   board
+         shot "${m}_holder" 0,-1,0,50,0,20,80    holder
+         shot "${m}_demo"   0,2,0,55,0,210,110   demo ;;
+    esac
+  fi
+  if [ "${STL:-1}" = 1 ]; then
+    case " $families " in *" $m "*) s=demo ;; *) s=board ;; esac
+    openscad -q --export-format binstl -D "show=\"$s\"" -o "modules/$m/$m.stl" "$f"
+  fi
 done
