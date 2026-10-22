@@ -40,122 +40,110 @@ Modules are sorted into category folders (`dev-boards/`, `displays/`, `sensors/`
 
 ## Modules
 
-**✓** measured with calipers, **◐** from a published drawing or the listing's sizes, **○** typical sizes from photos (to be measured). Click a category for its page, or a module for its pictures, sizes and 3D view.
+Open a category to see its modules; a module's folder has its pictures, sizes and 3D view.
 
-### [Dev boards](dev-boards/)
+<!-- modules: written by tools/make_readmes.py -->
 
-Microcontroller boards: ESP32, RP2040, ATmega32U4.
-
-[ESP32-C3 Super Mini](dev-boards/esp32_c3_supermini/) ✓, [ESP32-DevKitC 38-pin](dev-boards/esp32_devkitc_38/) ◐, [RP2040 Pico clone](dev-boards/pico_rp2040_typec/) ◐, [Pro Micro (ATmega32U4 / RP2040)](dev-boards/pro_micro/) ○.
+✓ measured with calipers · ◐ from a published drawing or the listing's sizes · ○ typical, from photos (to be measured)
 
 <details>
-<summary>Pictures</summary>
+<summary><b><a href="dev-boards/">Dev boards</a></b>: Microcontroller boards: ESP32, RP2040, ATmega32U4.</summary>
 
-| | | |
-|---|---|---|
-| ![ESP32-C3 Super Mini](dev-boards/esp32_c3_supermini/esp32_c3_supermini.png) | ![ESP32 DevKitC](dev-boards/esp32_devkitc_38/esp32_devkitc_38.png) | ![Pico clone](dev-boards/pico_rp2040_typec/pico_rp2040_typec.png) |
-| ![Pro Micro](dev-boards/pro_micro/pro_micro.png) | ![RP2040 Pro Micro](dev-boards/pro_micro/pro_micro_rp2040.png) |  |
+| Module | Picture |
+|---|---|
+| ✓ [ESP32-C3 Super Mini](dev-boards/esp32_c3_supermini/) | <img src="dev-boards/esp32_c3_supermini/esp32_c3_supermini.png" width="200"> |
+| ◐ [ESP32-DevKitC V4, 38 pins](dev-boards/esp32_devkitc_38/) | <img src="dev-boards/esp32_devkitc_38/esp32_devkitc_38.png" width="200"> |
+| ◐ [RP2040 Pico clone (USB-C, 16 MB)](dev-boards/pico_rp2040_typec/) | <img src="dev-boards/pico_rp2040_typec/pico_rp2040_typec.png" width="200"> |
+| ○ [Pro Micro (ATmega32U4 / RP2040)](dev-boards/pro_micro/) | <img src="dev-boards/pro_micro/pro_micro.png" width="200"> |
 
 </details>
 
-### [Displays](displays/)
-
-LED matrices, TFTs, OLEDs, a character LCD and 7-segment displays.
-
-[MAX7219 FC-16 4-in-1](displays/max7219_fc16/) ○, [MAX7219 8×8](displays/max7219_8x8/) ○, [0.96" TFT ST7735S](displays/st7735_096/) ○, [0.91" OLED](displays/ssd1306_091/) ○, [1.3" OLED SH1106](displays/sh1106_13/) ○, [LCD1602 + I2C](displays/lcd1602/) ◐, [4-digit 7-segment](displays/seg7_4digit_036/) ○. Also here, for boards I don't have: [1.8" TFT ST7735](displays/st7735_18/), [1.3" TFT ST7789](displays/st7789_13/), [TM1637 display](displays/tm1637_4digit/).
-
 <details>
-<summary>Pictures</summary>
+<summary><b><a href="displays/">Displays</a></b>: LED matrices, TFTs, OLEDs, a character LCD and 7-segment displays.</summary>
 
-| | | |
-|---|---|---|
-| ![FC-16](displays/max7219_fc16/max7219_fc16.png) | ![8x8](displays/max7219_8x8/max7219_8x8.png) | ![0.96 TFT](displays/st7735_096/st7735_096.png) |
-| ![0.91 OLED](displays/ssd1306_091/ssd1306_091.png) | ![1.3 OLED](displays/sh1106_13/sh1106_13.png) | ![LCD1602](displays/lcd1602/lcd1602.png) |
-| ![LCD1602 with I2C backpack](displays/lcd1602/lcd1602_backpack.png) | ![7-segment](displays/seg7_4digit_036/seg7_4digit_036_demo.png) | ![1.8" TFT ST7735](displays/st7735_18/st7735_18.png) |
-| ![1.3" TFT ST7789](displays/st7789_13/st7789_13.png) | ![TM1637 display](displays/tm1637_4digit/tm1637_4digit.png) |  |
+| Module | Picture |
+|---|---|
+| ○ [MAX7219 FC-16 4-in-1 LED matrix](displays/max7219_fc16/) | <img src="displays/max7219_fc16/max7219_fc16.png" width="200"> |
+| ○ [MAX7219 8x8 LED matrix](displays/max7219_8x8/) | <img src="displays/max7219_8x8/max7219_8x8.png" width="200"> |
+| ○ [0.96" IPS TFT (ST7735S)](displays/st7735_096/) | <img src="displays/st7735_096/st7735_096.png" width="200"> |
+| ○ [0.91" OLED (SSD1306)](displays/ssd1306_091/) | <img src="displays/ssd1306_091/ssd1306_091.png" width="200"> |
+| ○ [1.3" OLED (SH1106)](displays/sh1106_13/) | <img src="displays/sh1106_13/sh1106_13.png" width="200"> |
+| ◐ [LCD1602 with I2C backpack](displays/lcd1602/) | <img src="displays/lcd1602/lcd1602.png" width="200"> |
+| ○ [4-digit 7-segment display, 0.36"](displays/seg7_4digit_036/) | <img src="displays/seg7_4digit_036/seg7_4digit_036.png" width="200"> |
+| ○ [1.8" TFT (ST7735)](displays/st7735_18/) (not one I have) | <img src="displays/st7735_18/st7735_18.png" width="200"> |
+| ○ [1.3" IPS TFT (ST7789)](displays/st7789_13/) (not one I have) | <img src="displays/st7789_13/st7789_13.png" width="200"> |
+| ○ [TM1637 4-digit display module](displays/tm1637_4digit/) (not one I have) | <img src="displays/tm1637_4digit/tm1637_4digit.png" width="200"> |
 
 </details>
 
-### [Sensors](sensors/)
-
-Small I2C sensor boards: climate, light, current, ADC, distance, hall.
-
-[BME280](sensors/gy_bme280/) ○, [BH1750](sensors/gy302_bh1750/) ○, [VEML7700](sensors/veml7700/) ◐, [INA226](sensors/ina226_cjmcu226/) ○, [ADS1115](sensors/ads1115/) ○, [VL53L0X](sensors/vl53l0x_gy530/) ○, [KY-024 hall](sensors/ky024_hall/) ○.
-
 <details>
-<summary>Pictures</summary>
+<summary><b><a href="sensors/">Sensors</a></b>: Small I2C sensor boards: climate, light, current, ADC, distance, hall.</summary>
 
-| | | |
-|---|---|---|
-| ![BME280](sensors/gy_bme280/gy_bme280.png) | ![BH1750](sensors/gy302_bh1750/gy302_bh1750.png) | ![VEML7700](sensors/veml7700/veml7700.png) |
-| ![INA226](sensors/ina226_cjmcu226/ina226_cjmcu226.png) | ![ADS1115](sensors/ads1115/ads1115.png) | ![VL53L0X](sensors/vl53l0x_gy530/vl53l0x_gy530.png) |
-| ![KY-024](sensors/ky024_hall/ky024_hall.png) |  |  |
+| Module | Picture |
+|---|---|
+| ○ [GY-BME280 / BMP280](sensors/gy_bme280/) | <img src="sensors/gy_bme280/gy_bme280.png" width="200"> |
+| ○ [GY-302 BH1750 light sensor](sensors/gy302_bh1750/) | <img src="sensors/gy302_bh1750/gy302_bh1750.png" width="200"> |
+| ◐ [VEML7700 light sensor](sensors/veml7700/) | <img src="sensors/veml7700/veml7700.png" width="200"> |
+| ○ [INA226 current monitor (CJMCU-226)](sensors/ina226_cjmcu226/) | <img src="sensors/ina226_cjmcu226/ina226_cjmcu226.png" width="200"> |
+| ○ [ADS1115 ADC](sensors/ads1115/) | <img src="sensors/ads1115/ads1115.png" width="200"> |
+| ○ [VL53L0X distance sensor (GY-530)](sensors/vl53l0x_gy530/) | <img src="sensors/vl53l0x_gy530/vl53l0x_gy530.png" width="200"> |
+| ○ [KY-024 hall sensor](sensors/ky024_hall/) | <img src="sensors/ky024_hall/ky024_hall.png" width="200"> |
 
 </details>
 
-### [Inputs](inputs/)
-
-Things you press, touch or turn.
-
-[KY-040 encoder](inputs/ky040_encoder/) ○, [TTP223 touch](inputs/ttp223_touch/) ○, [5-way button](inputs/nav5_button/) ○.
-
 <details>
-<summary>Pictures</summary>
+<summary><b><a href="inputs/">Inputs</a></b>: Things you press, touch or turn.</summary>
 
-| | | |
-|---|---|---|
-| ![KY-040](inputs/ky040_encoder/ky040_encoder_demo.png) | ![TTP223](inputs/ttp223_touch/ttp223_touch.png) | ![5-way button](inputs/nav5_button/nav5_button_demo.png) |
+| Module | Picture |
+|---|---|
+| ○ [KY-040 rotary encoder](inputs/ky040_encoder/) | <img src="inputs/ky040_encoder/ky040_encoder.png" width="200"> |
+| ○ [TTP223 touch button](inputs/ttp223_touch/) | <img src="inputs/ttp223_touch/ttp223_touch.png" width="200"> |
+| ○ [5-way navigation button](inputs/nav5_button/) | <img src="inputs/nav5_button/nav5_button.png" width="200"> |
 
 </details>
 
-### [Other boards](boards/)
-
-Bluetooth, an MP3 player, LED boards, a stepper driver, USB-C breakouts.
-
-[HC-05](boards/hc05/) ○, [DFPlayer Mini](boards/dfplayer_mini/) ○, [WS2812 bar and 3×3](boards/ws2812_boards/) ○, [TMC2209](boards/tmc2209_stepstick/) ◐, [USB-C breakouts](boards/usbc_breakouts/) ◐.
-
 <details>
-<summary>Pictures</summary>
+<summary><b><a href="boards/">Other boards</a></b>: Bluetooth, an MP3 player, LED boards, a stepper driver, USB-C breakouts.</summary>
 
-| | | |
-|---|---|---|
-| ![HC-05](boards/hc05/hc05.png) | ![DFPlayer](boards/dfplayer_mini/dfplayer_mini.png) | ![WS2812](boards/ws2812_boards/ws2812_boards_demo.png) |
-| ![TMC2209](boards/tmc2209_stepstick/tmc2209_stepstick_demo.png) | ![USB-C breakouts](boards/usbc_breakouts/usbc_breakouts.png) |  |
+| Module | Picture |
+|---|---|
+| ○ [HC-05 Bluetooth module](boards/hc05/) | <img src="boards/hc05/hc05.png" width="200"> |
+| ○ [DFPlayer Mini](boards/dfplayer_mini/) | <img src="boards/dfplayer_mini/dfplayer_mini.png" width="200"> |
+| ○ [WS2812B LED boards](boards/ws2812_boards/) | <img src="boards/ws2812_boards/ws2812_boards.png" width="200"> |
+| ◐ [TMC2209 stepper driver](boards/tmc2209_stepstick/) | <img src="boards/tmc2209_stepstick/tmc2209_stepstick.png" width="200"> |
+| ◐ [USB-C breakout boards](boards/usbc_breakouts/) | <img src="boards/usbc_breakouts/usbc_breakouts.png" width="200"> |
 
 </details>
 
-### [Power](power/)
-
-Chargers, power bank boards, DC-DC converters and a voltmeter.
-
-[TP4056](power/tp4056/) ○, [Type-C 5V 2A power bank board](power/powerbank_5v2a_typec/) ◐, [2S 8.4 V charger](power/charger_2s_typec/) ◐, [mini charger + boost](power/charger_mini_typec_boost/) ◐, [mini 5V 3A boost](power/boost_mini_5v3a/) ○, [LM2596S, MT3608, tiny step-up, mini step-down, S09](power/converters/) ○, [XY-UP USB stick](power/usb_stepupdown_xyup/) ○, [ZK-SJVA-4X with LCD](power/buckboost_lcd_zksjva/) ○, [0.28" voltmeter](power/voltmeter_028/) ○. Also here, for boards I don't have: [IP5306 MH-CD42](power/ip5306_mhcd42/).
-
 <details>
-<summary>Pictures</summary>
+<summary><b><a href="power/">Power</a></b>: Chargers, power bank boards, DC-DC converters and a voltmeter.</summary>
 
-| | | |
-|---|---|---|
-| ![TP4056](power/tp4056/tp4056.png) | ![Power bank board](power/powerbank_5v2a_typec/powerbank_5v2a_typec.png) | ![2S charger](power/charger_2s_typec/charger_2s_typec.png) |
-| ![Mini charger + boost](power/charger_mini_typec_boost/charger_mini_typec_boost.png) | ![Mini boost](power/boost_mini_5v3a/boost_mini_5v3a.png) | ![Converters](power/converters/converters.png) |
-| ![XY-UP](power/usb_stepupdown_xyup/usb_stepupdown_xyup.png) | ![ZK-SJVA-4X](power/buckboost_lcd_zksjva/buckboost_lcd_zksjva.png) | ![Voltmeter](power/voltmeter_028/voltmeter_028.png) |
-| ![IP5306 MH-CD42](power/ip5306_mhcd42/ip5306_mhcd42.png) |  |  |
+| Module | Picture |
+|---|---|
+| ○ [TP4056 charger](power/tp4056/) | <img src="power/tp4056/tp4056.png" width="200"> |
+| ◐ [Type-C 5V 2A power bank board](power/powerbank_5v2a_typec/) | <img src="power/powerbank_5v2a_typec/powerbank_5v2a_typec.png" width="200"> |
+| ◐ [2S Type-C boost charger](power/charger_2s_typec/) | <img src="power/charger_2s_typec/charger_2s_typec.png" width="200"> |
+| ◐ [Mini charger + 5V boost](power/charger_mini_typec_boost/) | <img src="power/charger_mini_typec_boost/charger_mini_typec_boost.png" width="200"> |
+| ○ [Mini 5V 3A boost board](power/boost_mini_5v3a/) | <img src="power/boost_mini_5v3a/boost_mini_5v3a.png" width="200"> |
+| ○ [DC-DC converter boards](power/converters/) | <img src="power/converters/converters.png" width="200"> |
+| ○ [XY-UP USB step-up/down](power/usb_stepupdown_xyup/) | <img src="power/usb_stepupdown_xyup/usb_stepupdown_xyup.png" width="200"> |
+| ○ [ZK-SJVA-4X buck-boost with LCD](power/buckboost_lcd_zksjva/) | <img src="power/buckboost_lcd_zksjva/buckboost_lcd_zksjva.png" width="200"> |
+| ○ [0.28" voltmeter](power/voltmeter_028/) | <img src="power/voltmeter_028/voltmeter_028.png" width="200"> |
+| ○ [IP5306 charge/discharge board (MH-CD42)](power/ip5306_mhcd42/) (not one I have) | <img src="power/ip5306_mhcd42/ip5306_mhcd42.png" width="200"> |
 
 </details>
 
-### [Hardware](hardware/)
-
-Batteries and holders, and parts that go in a panel.
-
-[18650 holders, CR2032, LiPo](hardware/batteries/) ○, [rockers, slides, buttons, DC jack, speaker](hardware/panel_parts/) ○.
-
 <details>
-<summary>Pictures</summary>
+<summary><b><a href="hardware/">Hardware</a></b>: Batteries and holders, and parts that go in a panel.</summary>
 
-| | | |
-|---|---|---|
-| ![Batteries](hardware/batteries/batteries.png) | ![Panel parts](hardware/panel_parts/panel_parts.png) |  |
+| Module | Picture |
+|---|---|
+| ○ [Batteries and holders](hardware/batteries/) | <img src="hardware/batteries/batteries.png" width="200"> |
+| ○ [Panel parts](hardware/panel_parts/) | <img src="hardware/panel_parts/panel_parts.png" width="200"> |
 
 </details>
+
+<!-- /modules -->
 
 ## In this repository
 
@@ -163,7 +151,7 @@ Batteries and holders, and parts that go in a panel.
 |---|---|
 | [`dev-boards/`](dev-boards/), [`displays/`](displays/), [`sensors/`](sensors/), [`inputs/`](inputs/), [`boards/`](boards/), [`power/`](power/), [`hardware/`](hardware/) | A folder per category with a README listing its modules, and in it a folder per module (or a small family of parts): the `.scad` file with its sizes at the top, its pictures, a 3D `.stl` and a README |
 | [`lib/`](lib/) | Shared shapes: [`parts.scad`](lib/parts.scad) (chips, passives, connectors, headers...), [`breakout.scad`](lib/breakout.scad) (breakout boards, posts, USB cutouts, vents), [`display.scad`](lib/display.scad) (glass, LED matrices, 7-segment digits, windows, edge holder) |
-| [`tools/`](tools/) | `render.sh` makes the pictures and the 3D files (needs OpenSCAD), `make_readmes.py` writes the module and category READMEs |
+| [`tools/`](tools/) | `render.sh` makes the pictures and the 3D files (needs OpenSCAD), `make_readmes.py` writes the module and category READMEs and the module list above |
 
 ## Planned
 

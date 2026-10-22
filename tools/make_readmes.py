@@ -195,22 +195,48 @@ def modules(cat):
     return sorted(n for n in os.listdir(d) if os.path.isfile(os.path.join(d, n, n + ".scad")))
 
 
-def write_cat(cat):
-    title, line = CATS[cat]
+def rows(cat, prefix=""):
+    """The two-column table of a category: mark and name, picture.
+    Boards I don't have go last."""
     names = modules(cat)
-    out = [f"# {title}", "", line, "",
-           "✓ measured · ◐ from a drawing or the listing · ○ typical, from photos", "",
-           "| | Module | Picture |", "|---|---|---|"]
-    for n in names:
+    order = [n for n in INFO if n in names] + [n for n in names if n not in INFO]
+    order = [n for n in order if n not in NOT_MINE] + [n for n in order if n in NOT_MINE]
+    out = ["| Module | Picture |", "|---|---|"]
+    for n in order:
         t, src = INFO.get(n, (n, "typical"))
         extra = " (not one I have)" if n in NOT_MINE else ""
-        out.append(f"| {MARK[src]} | [{t}]({n}/){extra} | <img src=\"{n}/{n}.png\" width=\"200\"> |")
+        out.append(f"| {MARK[src]} [{t}]({prefix}{n}/){extra} | <img src=\"{prefix}{n}/{n}.png\" width=\"200\"> |")
+    return out
+
+
+LEGEND = "✓ measured with calipers · ◐ from a published drawing or the listing's sizes · ○ typical, from photos (to be measured)"
+
+
+def write_cat(cat):
+    title, line = CATS[cat]
+    out = [f"# {title}", "", line, "", LEGEND, ""] + rows(cat)
     out += ["", "---", "", "Part of [partbin](../README.md)."]
     open(os.path.join(ROOT, cat, "README.md"), "w").write("\n".join(out) + "\n")
+
+
+def write_main():
+    """The module list in the main README, between the two markers:
+    a fold-out per category."""
+    path = os.path.join(ROOT, "README.md")
+    text = open(path).read()
+    a, b = "<!-- modules: written by tools/make_readmes.py -->", "<!-- /modules -->"
+    out = [a, "", LEGEND, ""]
+    for cat, (title, line) in CATS.items():
+        out += ["<details>", f"<summary><b><a href=\"{cat}/\">{title}</a></b>: {line}</summary>", ""]
+        out += rows(cat, cat + "/") + ["", "</details>", ""]
+    out.append(b)
+    i, j = text.index(a), text.index(b) + len(b)
+    open(path, "w").write(text[:i] + "\n".join(out) + text[j:])
 
 
 for cat in CATS:
     for name in modules(cat):
         write(cat, name)
     write_cat(cat)
+write_main()
 print("done")
