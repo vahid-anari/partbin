@@ -29,9 +29,9 @@ usb_h    = 3.1;     // USB-C height above the board (the tallest part)
 usb_out  = 1.7;     // how far the socket sticks out past the board's edge
 usb_left = 5.0;     // board's left edge to the socket's left side (parts up, USB away from you)
 pin_span = 17.78;   // first to last hole in a row (8 pins, 2.54 mm)
+row_x    = 7.62;    // each pin row from the centre (rows 15.24 mm apart, measured)
 
 // ------------------------------------------------ typical / from the photos
-row_x    = 7.62;    // each pin row from the centre (rows 15.24 mm apart)
 pin_y0   = 1.0;     // the pin rows' middle sits this far towards the USB
 usb_len  = 7.6;     // socket depth
 drill    = 1.0;

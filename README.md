@@ -47,7 +47,7 @@ Opened on its own, each module file shows the board in its holder behind a piece
 
 | Module | File | Measured |
 |---|---|---|
-| ESP32-C3 Super Mini | [`modules/esp32_c3_supermini.scad`](modules/esp32_c3_supermini.scad) | yes, except the distance between the pin rows |
+| ESP32-C3 Super Mini | [`modules/esp32_c3_supermini.scad`](modules/esp32_c3_supermini.scad) | yes |
 
 ## Files
 
