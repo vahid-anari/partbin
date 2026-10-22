@@ -60,6 +60,11 @@ Opened on its own, each module file shows the board in its holder behind a piece
 | KY-024 linear hall sensor | [`modules/ky024_hall.scad`](modules/ky024_hall.scad) | not yet: from a photo |
 | TTP223 touch button | [`modules/ttp223_touch.scad`](modules/ttp223_touch.scad) | not yet: typical |
 | KY-040 rotary encoder (EC11), with the knob | [`modules/ky040_encoder.scad`](modules/ky040_encoder.scad) | not yet: typical |
+| Five-direction navigation button module | [`modules/nav5_button.scad`](modules/nav5_button.scad) | not yet: from a photo |
+| HC-05 Bluetooth module on its backplane | [`modules/hc05.scad`](modules/hc05.scad) | not yet: typical |
+| DFPlayer Mini MP3 player | [`modules/dfplayer_mini.scad`](modules/dfplayer_mini.scad) | not yet: typical |
+| WS2812B 8-LED bar and 3x3 panel | [`modules/ws2812_boards.scad`](modules/ws2812_boards.scad) | not yet: typical |
+| TMC2209 stepper driver (StepStick) | [`modules/tmc2209_stepstick.scad`](modules/tmc2209_stepstick.scad) | StepStick standard; heatsink typical |
 | MAX7219 FC-16 4-in-1 LED matrix, green (one or more end to end) | [`modules/max7219_fc16.scad`](modules/max7219_fc16.scad) | not yet: typical |
 | MAX7219 single 8x8 LED matrix (DIP kit), green | [`modules/max7219_8x8.scad`](modules/max7219_8x8.scad) | not yet: typical |
 | 1.8" TFT 128x160 ST7735 (red, microSD) *(not one of mine)* | [`modules/st7735_18.scad`](modules/st7735_18.scad) | not yet: typical |
@@ -93,6 +98,8 @@ Sensor boards come with posts for their holes (`_holder`, pegs or screws) and a 
 | ![Pico clone](images/pico_rp2040_typec.png) | ![Pro Micro](images/pro_micro.png) | ![RP2040 Pro Micro](images/pro_micro_rp2040.png) |
 | ![INA226](images/ina226_cjmcu226.png) | ![ADS1115](images/ads1115.png) | ![VL53L0X](images/vl53l0x_gy530.png) |
 | ![KY-024](images/ky024_hall.png) | ![TTP223](images/ttp223_touch.png) | ![KY-040](images/ky040_encoder_demo.png) |
+| ![5-way button](images/nav5_button_demo.png) | ![HC-05](images/hc05.png) | ![DFPlayer](images/dfplayer_mini.png) |
+| ![WS2812](images/ws2812_boards_demo.png) | ![TMC2209](images/tmc2209_stepstick_demo.png) | |
 
 ## Files
 

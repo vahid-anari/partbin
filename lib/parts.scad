@@ -309,3 +309,25 @@ module ec11(shaft = 20, bushing = 7) {
         translate([1.5, -3, shaft - 10]) cube([3, 6, 11]);
     }
 }
+
+// WS2812B 5050 RGB LED: white body with a clear window.
+module ws2812(size = 5.0, h = 1.6) {
+    color([0.95, 0.95, 0.93]) translate([-size / 2, -size / 2, 0]) cube([size, size, h - 0.05]);
+    color([0.85, 0.85, 0.80, 0.8]) translate([0, 0, h - 0.05]) cylinder(d = size * 0.8, h = 0.05, $fn = 32);
+    color([0.2, 0.2, 0.2]) translate([-0.6, -0.6, h - 0.06]) cube([1.2, 1.2, 0.02]);
+}
+
+// A 5-way navigation switch (up/down/left/right/press) with its stick.
+module nav5_switch(size = 10.0, h = 5.5, stick = 6.0) {
+    color([0.85, 0.85, 0.85]) translate([-size / 2, -size / 2, 0]) cube([size, size, h * 0.55]);
+    color([0.2, 0.2, 0.2]) translate([-size / 2 + 1, -size / 2 + 1, h * 0.55]) cube([size - 2, size - 2, h * 0.45]);
+    color([0.1, 0.1, 0.1]) translate([0, 0, h]) cylinder(d = 3.5, h = stick, $fn = 24);
+}
+
+// 6 x 6 mm through-hole tact switch: `h` = total height with the button.
+module tact6(h = 5.0, cap = [0.1, 0.1, 0.1]) {
+    color([0.15, 0.15, 0.15]) translate([-3, -3, 0]) cube([6, 6, 3.4]);
+    color(c_tin()) translate([-3, -3, 3.4]) cube([6, 6, 0.3]);
+    color(cap) translate([0, 0, 3.7]) cylinder(d = 3.5, h = max(0.3, h - 3.7), $fn = 24);
+    color(c_tin()) for (sx = [-1, 1], sy = [-1, 1]) translate([sx * 3.25 - 0.3, sy * 2.25 - 0.15, -3]) cube([0.6, 0.3, 3]);
+}
