@@ -5,7 +5,7 @@
 //   use <partbin/modules/max7219_8x8.scad>
 //
 //   max7219_8x8();                      the module, with its parts
-//   max7219_8x8(leds = "red");           LED colour: green (yours), red, blue, white, yellow
+//   max7219_8x8(leds = "red");           LED colour: green (default), red, blue, white, yellow
 //   max7219_8x8(detail = false);        only what matters for fit (fast)
 //   max7219_8x8(headers = "none");      without the end headers ("angle" = default)
 //   max7219_8x8_holder();               ledge and low walls around the board

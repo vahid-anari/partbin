@@ -3,7 +3,7 @@
 //
 //   use <partbin/modules/lcd1602.scad>
 //
-//   lcd1602();                        the display with the I2C backpack (yours), green screen
+//   lcd1602();                        the display with the I2C backpack, green screen (default)
 //   lcd1602(backpack = false);        without the backpack
 //   lcd1602(screen = "blue");         the blue version
 //   lcd1602(detail = false);          only what matters for fit (fast)

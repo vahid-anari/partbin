@@ -1,5 +1,5 @@
 // 1.3" OLED, 128 x 64, SH1106 over I2C (4 pins at the top: GND VCC SCL SDA,
-// four corner holes). Yours is the TENSTAR one with a white screen.
+// four corner holes). Drawn after the TENSTAR one (white screen).
 //
 //   use <partbin/modules/sh1106_13.scad>
 //

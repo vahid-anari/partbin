@@ -1,6 +1,6 @@
 // Bare 4-digit 7-segment LED display, 0.36" (3641-style, common cathode,
-// 12 pins in two rows of 6 underneath). Yours come in blue, white, red and
-// green.
+// 12 pins in two rows of 6 underneath). Sold in red, green, blue,
+// white and other colours.
 //
 //   use <partbin/modules/seg7_4digit_036.scad>
 //

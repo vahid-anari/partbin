@@ -6,7 +6,7 @@
 //
 //   max7219_fc16();                      one board, with its parts
 //   max7219_fc16(boards = 2);            two boards end to end (64 x 8 LEDs)
-//   max7219_fc16(leds = "red");          LED colour: green (yours), red, blue, white, yellow
+//   max7219_fc16(leds = "red");          LED colour: green (default), red, blue, white, yellow
 //   max7219_fc16(detail = false);        only what matters for fit (fast)
 //   max7219_fc16(headers = "none");      without the end headers ("angle" = default)
 //   max7219_fc16_holder(boards = 2);     ledge and low walls around the boards

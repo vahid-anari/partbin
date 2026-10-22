@@ -17,7 +17,7 @@
 Add it as a git submodule, so a fix here reaches every project:
 
 ```sh
-cd ~/Desktop/"Git projects"/<project>
+cd your-project
 git submodule add https://github.com/vahid-anari/partbin.git partbin
 ```
 

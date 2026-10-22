@@ -20,7 +20,7 @@
 
 use <../lib/parts.scad>
 
-// ------------------------------------------------- measured (Vahid, calipers)
+// ------------------------------------------------- measured with calipers ---
 sm_w     = 18.0;    // board width (x)
 sm_l     = 23.0;    // board length (y), without the USB socket
 sm_t     = 0.8;     // PCB

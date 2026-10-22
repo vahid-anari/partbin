@@ -1,6 +1,6 @@
 // 0.28" 3-digit LED voltmeter, DC 0-100 V, 3 wires (red: power, yellow:
 // measure, black: GND). A small green board with the display and a mounting
-// ear with a hole at each end. Yours are red and green.
+// ear with a hole at each end. Sold in red, green, blue and other colours.
 //
 //   use <partbin/modules/voltmeter_028.scad>
 //
