@@ -86,6 +86,7 @@ Opened on its own, each module file shows the board in its holder behind a piece
 | 0.28" 3-wire voltmeter | [`modules/voltmeter_028.scad`](modules/voltmeter_028.scad) | not yet: typical |
 | 18650 cell and box holders (1-4 slots), CR2032 holder, LiPo pouch | [`modules/batteries.scad`](modules/batteries.scad) | not yet: typical |
 | Panel parts: KCD11 / KCD1 rockers, SS12D00 / MSS22D18 slides, 6x6 tact, 8.5 mm self-locking, DC jack, 2831 speaker | [`modules/panel_parts.scad`](modules/panel_parts.scad) | not yet: typical |
+| USB-C breakouts: red 6-pin, green 4-pin | [`modules/usbc_breakouts.scad`](modules/usbc_breakouts.scad) | from the listings |
 | IP5306 charge/discharge board (MH-CD42) *(not one of mine)* | [`modules/ip5306_mhcd42.scad`](modules/ip5306_mhcd42.scad) | not yet: typical |
 
 Some files hold a family of small parts (converters, batteries, panel parts): each part has its own modules inside.
@@ -109,7 +110,7 @@ Sensor boards come with posts for their holes (`_holder`, pegs or screws) and a 
 | ![5-way button](images/nav5_button_demo.png) | ![HC-05](images/hc05.png) | ![DFPlayer](images/dfplayer_mini.png) |
 | ![WS2812](images/ws2812_boards_demo.png) | ![TMC2209](images/tmc2209_stepstick_demo.png) | ![Converters](images/converters.png) |
 | ![XY-UP](images/usb_stepupdown_xyup.png) | ![ZK-SJVA-4X](images/buckboost_lcd_zksjva.png) | ![Voltmeter](images/voltmeter_028.png) |
-| ![Batteries](images/batteries.png) | ![Panel parts](images/panel_parts.png) | |
+| ![Batteries](images/batteries.png) | ![Panel parts](images/panel_parts.png) | ![USB-C breakouts](images/usbc_breakouts.png) |
 
 ## Files
 
