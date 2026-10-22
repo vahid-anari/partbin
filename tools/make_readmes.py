@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Write modules/<name>/README.md for every module, from its .scad file:
+"""Write <category>/<name>/README.md for every module, from its .scad file:
 the header comment (description, how to use it, where it sits), the
 settings at the top (the sizes to check with calipers), the pictures and
-a link to the 3D view (GitHub shows .stl files in 3D).
+a link to the 3D view (GitHub shows .stl files in 3D). Also writes
+<category>/README.md, listing that category's modules.
 
     tools/make_readmes.py
 """
@@ -10,7 +11,20 @@ import os
 import re
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
-MODULES = os.path.join(ROOT, "modules")
+
+# category folder: (title, one line about it)
+CATS = {
+    "dev-boards": ("Dev boards", "Microcontroller boards: ESP32, RP2040, ATmega32U4."),
+    "displays": ("Displays", "LED matrices, TFTs, OLEDs, a character LCD and 7-segment displays."),
+    "sensors": ("Sensors", "Small I2C sensor boards: climate, light, current, ADC, distance, hall."),
+    "inputs": ("Inputs", "Things you press, touch or turn."),
+    "boards": ("Other boards", "Bluetooth, an MP3 player, LED boards, a stepper driver, USB-C breakouts."),
+    "power": ("Power", "Chargers, power bank boards, DC-DC converters and a voltmeter."),
+    "hardware": ("Hardware", "Batteries and holders, and parts that go in a panel."),
+}
+# here, but not boards I have
+NOT_MINE = {"st7735_18", "st7789_13", "tm1637_4digit", "ip5306_mhcd42"}
+MARK = {"measured": "✓", "drawing": "◐", "typical": "○"}
 
 # name, and where the sizes come from: "measured", "drawing" (a published
 # drawing or the listing's sizes) or "typical" (from photos)
@@ -104,8 +118,8 @@ def prose(par):
     return text.replace("<", "&lt;").replace(">", "&gt;")
 
 
-def write(name):
-    folder = os.path.join(MODULES, name)
+def write(cat, name):
+    folder = os.path.join(ROOT, cat, name)
     scad = os.path.join(folder, name + ".scad")
     lines = open(scad).read().splitlines()
     paras = header(lines)
@@ -146,7 +160,7 @@ def write(name):
         out.append("| " + " | ".join(f"![{c[0]}]({c[1]})" for c in cells) + " |")
         out.append("")
 
-    out += ["## Use it", "", "```openscad", f"use <partbin/modules/{name}/{name}.scad>", "```", ""]
+    out += ["## Use it", "", "```openscad", f"use <partbin/{cat}/{name}/{name}.scad>", "```", ""]
     rows = []
     for p in usage:
         for s in p:
@@ -172,11 +186,31 @@ def write(name):
             out.append(f"| `{n}` | {v} | {c} |")
         out.append("")
 
-    out += ["---", "", "Part of [partbin](../../README.md)."]
+    out += ["---", "", f"Part of [partbin](../../README.md), in [{CATS[cat][0]}](../README.md)."]
     open(os.path.join(folder, "README.md"), "w").write("\n".join(out) + "\n")
 
 
-for name in sorted(os.listdir(MODULES)):
-    if os.path.isdir(os.path.join(MODULES, name)):
-        write(name)
+def modules(cat):
+    d = os.path.join(ROOT, cat)
+    return sorted(n for n in os.listdir(d) if os.path.isfile(os.path.join(d, n, n + ".scad")))
+
+
+def write_cat(cat):
+    title, line = CATS[cat]
+    names = modules(cat)
+    out = [f"# {title}", "", line, "",
+           "✓ measured · ◐ from a drawing or the listing · ○ typical, from photos", "",
+           "| | Module | Picture |", "|---|---|---|"]
+    for n in names:
+        t, src = INFO.get(n, (n, "typical"))
+        extra = " (not one I have)" if n in NOT_MINE else ""
+        out.append(f"| {MARK[src]} | [{t}]({n}/){extra} | <img src=\"{n}/{n}.png\" width=\"200\"> |")
+    out += ["", "---", "", "Part of [partbin](../README.md)."]
+    open(os.path.join(ROOT, cat, "README.md"), "w").write("\n".join(out) + "\n")
+
+
+for cat in CATS:
+    for name in modules(cat):
+        write(cat, name)
+    write_cat(cat)
 print("done")

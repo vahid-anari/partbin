@@ -1,5 +1,6 @@
 #!/bin/sh
-# Pictures and the 3D file (binary STL) of every module, into its own folder:
+# Pictures and the 3D file (binary STL) of every module, into its own folder
+# (<category>/<name>/):
 #
 #   tools/render.sh                  all modules, pictures and STL
 #   tools/render.sh tp4056 lcd1602   only these
@@ -12,13 +13,14 @@ cd "$(dirname "$0")/.."
 run() { if command -v xvfb-run >/dev/null && [ -z "$DISPLAY" ]; then xvfb-run -a "$@"; else "$@"; fi; }
 # files holding a family of parts: their STL shows the whole family (show = "demo")
 families="converters batteries panel_parts ws2812_boards usbc_breakouts"
-mods=${*:-$(ls modules)}
+mods=${*:-$(ls -d */*/*.scad | grep -v "^lib/" | xargs -n1 dirname | xargs -n1 basename)}
 for m in $mods; do
-  f="modules/$m/$m.scad"
-  [ -f "$f" ] || { echo "no $f"; continue; }
+  f=$(ls */"$m"/"$m".scad 2>/dev/null | head -1)
+  [ -n "$f" ] || { echo "no module $m"; continue; }
+  d=$(dirname "$f")
   shot() {  # name, camera (translate x,y,z, rotate x,y,z, distance), show
     run openscad -q --imgsize=1600,1200 --colorscheme=Tomorrow --projection=p \
-        --autocenter --viewall --camera="$2" -D "show=\"$3\"" -o "modules/$m/$1.png" "$f"
+        --autocenter --viewall --camera="$2" -D "show=\"$3\"" -o "$d/$1.png" "$f"
   }
   if [ "${PICS:-1}" = 1 ]; then
     case " $families " in
@@ -31,6 +33,6 @@ for m in $mods; do
   fi
   if [ "${STL:-1}" = 1 ]; then
     case " $families " in *" $m "*) s=demo ;; *) s=board ;; esac
-    openscad -q --export-format binstl -D "show=\"$s\"" -o "modules/$m/$m.stl" "$f"
+    openscad -q --export-format binstl -D "show=\"$s\"" -o "$d/$m.stl" "$f"
   fi
 done
