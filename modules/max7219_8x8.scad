@@ -5,6 +5,7 @@
 //   use <partbin/modules/max7219_8x8.scad>
 //
 //   max7219_8x8();                      the module, with its parts
+//   max7219_8x8(leds = "red");           LED colour: green (yours), red, blue, white, yellow
 //   max7219_8x8(detail = false);        only what matters for fit (fast)
 //   max7219_8x8(headers = "none");      without the end headers ("angle" = default)
 //   max7219_8x8_holder();               ledge and low walls around the board
@@ -34,9 +35,9 @@ function max7219_8x8_size() = [b_w, b_l, b_t];
 function max7219_8x8_height() = b_t + led_h;
 
 // ======================================================================= board
-module max7219_8x8(detail = true, headers = "angle") {
+module max7219_8x8(detail = true, headers = "angle", leds = "green") {
     color([0.70, 0.12, 0.12]) translate([-b_w / 2, -b_l / 2, 0]) cube([b_w, b_l, b_t]);
-    translate([0, 0, b_t + socket_h]) led_matrix(32, matrix_h);
+    translate([0, 0, b_t + socket_h]) led_matrix(32, matrix_h, led_color(leds));
     translate([0, 0, b_t]) {
         // socket strips under the matrix's two rows of legs
         color(c_plastic()) for (s = [-1, 1]) translate([s * 13.3 - 1.27, -10.16, 0]) cube([2.54, 20.32, socket_h]);

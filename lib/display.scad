@@ -31,18 +31,26 @@ module led_matrix(size = 32, h = 7, led = [0.55, 0.06, 0.06], body = [0.12, 0.12
 }
 
 // ------------------------------------------------------- 7-segment digits
-// A block of `digits` 7-segment digits, `size` [x, y], h tall.
-module seg7_display(digits = 4, size = [30, 14], h = 7.2, colon = true) {
+// A block of `digits` 7-segment digits, `size` [x, y], h tall. `seg` is the
+// (unlit) segment colour.
+function seg7_color(name) =
+      name == "green" ? [0.10, 0.40, 0.10] : name == "blue" ? [0.10, 0.20, 0.55]
+    : name == "white" ? [0.75, 0.75, 0.72] : name == "yellow" ? [0.55, 0.50, 0.10] : [0.45, 0.06, 0.06];
+// LED colours for the matrices
+function led_color(name) =
+      name == "green" ? [0.08, 0.45, 0.10] : name == "blue" ? [0.10, 0.20, 0.60]
+    : name == "white" ? [0.80, 0.80, 0.78] : name == "yellow" ? [0.60, 0.55, 0.10] : [0.55, 0.06, 0.06];
+module seg7_display(digits = 4, size = [30, 14], h = 7.2, colon = true, seg = [0.35, 0.05, 0.05]) {
     color([0.92, 0.92, 0.92]) translate([-size[0] / 2, -size[1] / 2, 0]) cube([size[0], size[1], h - 0.05]);
     color([0.12, 0.12, 0.12]) translate([-size[0] / 2, -size[1] / 2, h - 0.05]) cube([size[0], size[1], 0.05]);
     dw = size[0] / digits;
     sh = size[1] * 0.68;  sw = dw * 0.5;  st = 0.7;
-    color([0.35, 0.05, 0.05]) for (d = [0:digits - 1]) translate([-size[0] / 2 + dw * (d + 0.5), 0, h]) {
+    color(seg) for (d = [0:digits - 1]) translate([-size[0] / 2 + dw * (d + 0.5), 0, h]) {
         for (y = [-1, 0, 1]) translate([-sw / 2, y * sh / 2 - st / 2, 0]) cube([sw, st, 0.03]);       // a g d
         for (x = [-1, 1], y = [-1, 1]) translate([x * sw / 2 - st / 2, y < 0 ? -sh / 2 : 0, 0]) cube([st, sh / 2, 0.03]);
         translate([sw / 2 + 0.7, -sh / 2 - 0.4, 0]) cylinder(d = 0.8, h = 0.03, $fn = 10);         // dot
     }
-    if (colon) color([0.35, 0.05, 0.05]) for (y = [-1.6, 1.6]) translate([0, y, h]) cylinder(d = 0.8, h = 0.03, $fn = 10);
+    if (colon) color(seg) for (y = [-1.6, 1.6]) translate([0, y, h]) cylinder(d = 0.8, h = 0.03, $fn = 10);
 }
 
 // ----------------------------------------------------------------- windows

@@ -6,6 +6,7 @@
 //
 //   max7219_fc16();                      one board, with its parts
 //   max7219_fc16(boards = 2);            two boards end to end (64 x 8 LEDs)
+//   max7219_fc16(leds = "red");          LED colour: green (yours), red, blue, white, yellow
 //   max7219_fc16(detail = false);        only what matters for fit (fast)
 //   max7219_fc16(headers = "none");      without the end headers ("angle" = default)
 //   max7219_fc16_holder(boards = 2);     ledge and low walls around the boards
@@ -36,11 +37,11 @@ function max7219_fc16_height() = b_t + led_h;
 function max7219_fc16_behind() = behind;
 
 // ======================================================================= board
-module max7219_fc16(boards = 1, detail = true, headers = "angle") {
+module max7219_fc16(boards = 1, detail = true, headers = "angle", leds = "green") {
     for (k = [0:boards - 1]) translate([(k - (boards - 1) / 2) * b_w, 0, 0]) {
         color([0.12, 0.12, 0.13]) translate([-b_w / 2, -b_l / 2, 0]) cube([b_w, b_l, b_t]);
         for (i = [0:3]) translate([(i - 1.5) * 32, 0, b_t + led_h - matrix_h]) {
-            led_matrix(32, matrix_h);
+            led_matrix(32, matrix_h, led_color(leds));
             if (detail) color(c_tin()) for (x = [-12, 12], j = [0:7])   // legs under the block
                 translate([x - 0.25 + (x < 0 ? -2.5 : 2.5) * 0, (j - 3.5) * 2.54 * 1.2 - 0.25, -(led_h - matrix_h)]) cube([0.5, 0.5, led_h - matrix_h]);
         }

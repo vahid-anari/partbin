@@ -51,15 +51,18 @@ Opened on its own, each module file shows the board in its holder behind a piece
 | GY-BME280 / GY-BMP280 (purple, 6 pins) | [`modules/gy_bme280.scad`](modules/gy_bme280.scad) | not yet: typical, from a photo |
 | GY-302 BH1750 light sensor | [`modules/gy302_bh1750.scad`](modules/gy302_bh1750.scad) | not yet: typical, from a photo |
 | VEML7700 light sensor (Adafruit layout) | [`modules/veml7700.scad`](modules/veml7700.scad) | from Adafruit's design files; thickness typical |
-| MAX7219 FC-16 4-in-1 LED matrix (one or more end to end) | [`modules/max7219_fc16.scad`](modules/max7219_fc16.scad) | not yet: typical |
-| MAX7219 single 8x8 LED matrix (DIP kit) | [`modules/max7219_8x8.scad`](modules/max7219_8x8.scad) | not yet: typical |
-| 1.8" TFT 128x160 ST7735 (red, microSD) | [`modules/st7735_18.scad`](modules/st7735_18.scad) | not yet: typical |
-| 1.3" IPS TFT 240x240 ST7789 (7 pins) | [`modules/st7789_13.scad`](modules/st7789_13.scad) | not yet: typical |
+| MAX7219 FC-16 4-in-1 LED matrix, green (one or more end to end) | [`modules/max7219_fc16.scad`](modules/max7219_fc16.scad) | not yet: typical |
+| MAX7219 single 8x8 LED matrix (DIP kit), green | [`modules/max7219_8x8.scad`](modules/max7219_8x8.scad) | not yet: typical |
+| 1.8" TFT 128x160 ST7735 (red, microSD) *(not one of mine)* | [`modules/st7735_18.scad`](modules/st7735_18.scad) | not yet: typical |
+| 1.3" IPS TFT 240x240 ST7789 (GMT130) *(not one of mine)* | [`modules/st7789_13.scad`](modules/st7789_13.scad) | not yet: typical |
 | 0.91" OLED 128x32 SSD1306 | [`modules/ssd1306_091.scad`](modules/ssd1306_091.scad) | not yet: typical |
-| LCD1602, with or without the I2C backpack | [`modules/lcd1602.scad`](modules/lcd1602.scad) | not yet: from a manufacturer's drawing |
-| TM1637 4-digit 7-segment | [`modules/tm1637_4digit.scad`](modules/tm1637_4digit.scad) | not yet: typical |
-| TP4056 charger, USB-C or micro-USB, with or without protection | [`modules/tp4056.scad`](modules/tp4056.scad) | not yet: typical |
-| IP5306 charge/discharge board (MH-CD42) | [`modules/ip5306_mhcd42.scad`](modules/ip5306_mhcd42.scad) | not yet: typical |
+| LCD1602 green, with the I2C backpack (or without) | [`modules/lcd1602.scad`](modules/lcd1602.scad) | not yet: from a manufacturer's drawing |
+| TM1637 4-digit 7-segment module *(not one of mine)* | [`modules/tm1637_4digit.scad`](modules/tm1637_4digit.scad) | not yet: typical |
+| 0.96" IPS TFT 80x160 ST7735S (8 pins) | [`modules/st7735_096.scad`](modules/st7735_096.scad) | not yet: from a seller photo |
+| 1.3" OLED 128x64 SH1106 (I2C) | [`modules/sh1106_13.scad`](modules/sh1106_13.scad) | not yet: typical |
+| Bare 4-digit 7-segment display, 0.36" (red, green, blue, white) | [`modules/seg7_4digit_036.scad`](modules/seg7_4digit_036.scad) | not yet: typical |
+| TP4056 charger, USB-C (mine) or micro-USB, with or without protection | [`modules/tp4056.scad`](modules/tp4056.scad) | not yet: typical |
+| IP5306 charge/discharge board (MH-CD42) *(not one of mine)* | [`modules/ip5306_mhcd42.scad`](modules/ip5306_mhcd42.scad) | not yet: typical |
 
 Displays face up like everything else, so a case with a front panel turns them to face it. Each comes with a `_window` for the front (the lit area, widening outwards) and a holder: posts for boards with holes, or `edge_holder` (a ledge under the edges and low walls) for boards without.
 
@@ -71,7 +74,8 @@ Sensor boards come with posts for their holes (`_holder`, pegs or screws) and a 
 | ![FC-16](images/max7219_fc16.png) | ![8x8](images/max7219_8x8.png) | ![LCD1602](images/lcd1602.png) |
 | ![ST7735](images/st7735_18.png) | ![ST7789](images/st7789_13.png) | ![OLED](images/ssd1306_091.png) |
 | ![TM1637](images/tm1637_4digit.png) | ![LCD1602 with I2C backpack](images/lcd1602_backpack.png) | ![TP4056](images/tp4056.png) |
-| ![IP5306](images/ip5306_mhcd42.png) | | |
+| ![IP5306](images/ip5306_mhcd42.png) | ![0.96 TFT](images/st7735_096.png) | ![1.3 OLED](images/sh1106_13.png) |
+| ![7-segment](images/seg7_4digit_036_demo.png) | | |
 
 ## Files
 

@@ -3,8 +3,9 @@
 //
 //   use <partbin/modules/lcd1602.scad>
 //
-//   lcd1602();                        the display, with its parts
-//   lcd1602(backpack = true);         with the I2C backpack on the back
+//   lcd1602();                        the display with the I2C backpack (yours), green screen
+//   lcd1602(backpack = false);        without the backpack
+//   lcd1602(screen = "blue");         the blue version
 //   lcd1602(detail = false);          only what matters for fit (fast)
 //   lcd1602_holder(h);                posts under its four holes, add to the case
 //   lcd1602_window(gap, wall);        the opening in the front, subtract it
@@ -44,12 +45,12 @@ pins_xc = pins_x0 + 7.5 * 2.54;       // middle of the 16 pins
 
 function lcd1602_size() = [b_w, b_l, b_t];
 function lcd1602_height() = b_t + frame_h;
-function lcd1602_behind(backpack = false) = backpack ? bp_gap + 1.6 + 6.5 : 1.5;
+function lcd1602_behind(backpack = true) = backpack ? bp_gap + 1.6 + 6.5 : 1.5;
 function lcd1602_holes() = holes;
 function lcd1602_pin(i) = [pins_x0 + (i - 1) * 2.54, pins_y];   // i = 1 ... 16
 
 // ======================================================================= board
-module lcd1602(backpack = false, detail = true) {
+module lcd1602(backpack = true, detail = true, screen = "green") {
     pcb([b_w, b_l], b_t, concat(
             [for (h = holes) [h[0], h[1], hole_d, 5.0]],
             [for (i = [0:15]) [pins_x0 + i * 2.54, pins_y, 1.0, 1.7]]),
@@ -60,9 +61,9 @@ module lcd1602(backpack = false, detail = true) {
             translate([-frame[0] / 2, -frame[1] / 2, 0]) cube([frame[0], frame[1], frame_h]);
             translate([-view[0] / 2, -view[1] / 2, frame_h - 1.4]) cube([view[0], view[1], 2]);
         }
-        color([0.10, 0.22, 0.75]) translate([-view[0] / 2 + 0.01, -view[1] / 2 + 0.01, frame_h - 1.6]) cube([view[0] - 0.02, view[1] - 0.02, 0.3]);
+        color(screen == "blue" ? [0.10, 0.22, 0.75] : [0.52, 0.70, 0.12]) translate([-view[0] / 2 + 0.01, -view[1] / 2 + 0.01, frame_h - 1.6]) cube([view[0] - 0.02, view[1] - 0.02, 0.3]);
         // two lines of 16 character cells
-        if (detail) color([0.25, 0.40, 0.95]) for (r = [0, 1], c = [0:15])
+        if (detail) color(screen == "blue" ? [0.25, 0.40, 0.95] : [0.60, 0.80, 0.18]) for (r = [0, 1], c = [0:15])
             translate([-active[0] / 2 + c * 3.55, (r == 0 ? 0.5 : -active[1] / 2), frame_h - 1.28])
                 cube([2.95, 5.2, 0.02]);
     }
@@ -110,9 +111,10 @@ module lcd1602_window(gap = 0.3, wall = 2, margin = 0, flare = 0.8) {
 show = "demo";  // demo | board | holder | backpack
 if (show == "board") lcd1602();
 else if (show == "backpack") lcd1602(backpack = true);
+else if (show == "bare") lcd1602(backpack = false);
 else if (show == "holder") color("#d6a24a") lcd1602_holder();
-else bo_demo([b_w, b_l], 3, b_t + frame_h + 0.3) {
+else bo_demo([b_w, b_l], 12, b_t + frame_h + 0.3) {
     lcd1602();
-    lcd1602_holder();
+    lcd1602_holder(12);
     lcd1602_window();
 }

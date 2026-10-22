@@ -1,12 +1,12 @@
 // 1.3" IPS TFT, 240 x 240, ST7789 (7 pins at the top: GND VCC SCL SDA RES
-// DC BLK, no CS pin, no mounting holes).
+// DC BLK, no CS pin, four corner holes; the "GMT130" board).
 //
 //   use <partbin/modules/st7789_13.scad>
 //
 //   st7789_13();                      the board, with its parts
 //   st7789_13(detail = false);        only what matters for fit (fast)
 //   st7789_13(headers = "down");      with the 7-pin header soldered on
-//   st7789_13_holder();               ledge and low walls around the board
+//   st7789_13_holder(h = 2);          posts under its holes, add to the case
 //   st7789_13_window(gap, wall);      the screen opening in the front, subtract it
 //   st7789_13_size()                  [width, length, pcb thickness]
 //   st7789_13_height()                PCB underside to the front of the glass
@@ -19,28 +19,34 @@ use <../lib/parts.scad>
 use <../lib/breakout.scad>
 use <../lib/display.scad>
 
-// ------------------------------------------------------------------- typical
+// ---------- typical; length and holes from a seller's photo (scaled by the pins)
 b_w      = 27.8;    // board width (x)
-b_l      = 39.2;    // board length (y)
+b_l      = 40.3;    // board length (y)
+hole_d   = 2.0;
+hole_x   = 1.8;     // hole centre to the side edges
+hole_top = 2.1;     // top holes, centre to the top edge
+hole_bot = 2.4;     // bottom holes, centre to the bottom edge
 b_t      = 1.6;     // PCB
 pin_top  = 1.4;     // pin centre to the top edge
 glass    = [26.2, 29.2];     // glass outline
 glass_t  = 1.9;     // glass and its tape
-glass_y  = -1.6;    // glass centre (y)
+glass_y  = 0.4;     // glass centre (y)
 active   = [23.4, 23.4];     // the lit area (240 x 240)
 active_y = 1.4;     // its centre, from the glass centre (the flex cable is at the bottom)
 
+holes  = [for (sx = [-1, 1], y = [b_l / 2 - hole_top, -b_l / 2 + hole_bot]) [sx * (b_w / 2 - hole_x), y]];
 pins_y = b_l / 2 - pin_top;
 pins   = ["GND", "VCC", "SCL", "SDA", "RES", "DC", "BLK"];
 
 function st7789_13_size() = [b_w, b_l, b_t];
 function st7789_13_height() = b_t + glass_t;
 function st7789_13_active() = [0, glass_y + active_y];
+function st7789_13_holes() = holes;
 function st7789_13_pin(i) = [(i - 3) * 2.54, pins_y];
 
 // ======================================================================= board
 module st7789_13(detail = true, headers = "none") {
-    bo_pcb([b_w, b_l], b_t, 0.6, [], 0, 0, 7, 0, pins_y, c_pcb_blue());
+    bo_pcb([b_w, b_l], b_t, 0.6, holes, hole_d, 3.4, 7, 0, pins_y, c_pcb_blue());
     translate([0, glass_y, b_t]) glass_panel(glass, glass_t, active, [0, active_y]);
     if (detail) {
         translate([0, 0, b_t]) for (i = [0:6])
@@ -56,8 +62,8 @@ module st7789_13(detail = true, headers = "none") {
 }
 
 // ===================================================================== holder
-module st7789_13_holder(h = 2) {
-    edge_holder([b_w, b_l], b_t, h, 1.5);
+module st7789_13_holder(h = 2, style = "peg") {
+    bo_mounts(holes, hole_d, b_t, h, style);
 }
 
 // ===================================================================== window
