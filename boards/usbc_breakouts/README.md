@@ -19,7 +19,7 @@ use <partbin/boards/usbc_breakouts/usbc_breakouts.scad>
 
 and for each: &lt;name&gt;_usb_cutout(wall, gap), &lt;name&gt;_holder(h), &lt;name&gt;_size().
 
-Where they sit: parts up, the board centred on x = y = 0, its underside at z = 0. Red: socket on the left long edge pointing -x, pins along the right. Green: socket at the bottom edge pointing -y, pins along the top. Red: outline measured, holes from a photo. Green: from the listing's photos.
+Where they sit: parts up, the board centred on x = y = 0, its underside at z = 0. Red: socket on the left long edge pointing -x, pins along the right. Green: socket at the bottom edge pointing -y, pins along the top. Red: outline, M3 holes and socket checked with a test print. Green: from the listing's photos.
 
 ## Sizes
 
@@ -28,7 +28,7 @@ At the top of [`usbc_breakouts.scad`](usbc_breakouts.scad), in mm: from a publis
 | Setting | Value | What |
 |---|---|---|
 | `r_size` | [12.6, 21.8, 1.6] | 14.2 across with the socket (measured) |
-| `r_usb_y` | -1.3 | the socket is off-centre |
+| `r_usb_y` | 0 | the socket is about in the middle (test print) |
 | `r_out` | 1.6 | the socket sticks out past the board (measured) |
 
 ---

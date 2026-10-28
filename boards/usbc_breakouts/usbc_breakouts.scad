@@ -11,7 +11,7 @@
 // Where they sit: parts up, the board centred on x = y = 0, its underside at
 // z = 0. Red: socket on the left long edge pointing -x, pins along the right.
 // Green: socket at the bottom edge pointing -y, pins along the top.
-// Red: outline measured, holes from a photo. Green: from the listing's photos.
+// Red: outline, M3 holes and socket checked with a test print. Green: from the listing's photos.
 
 use <../../lib/parts.scad>
 use <../../lib/breakout.scad>
@@ -26,14 +26,14 @@ r_size  = [12.6, 21.8, 1.6];   // 14.2 across with the socket (measured)
 r_holes = [[-12.6 / 2 + 2.4, 21.8 / 2 - 2.6], [-12.6 / 2 + 2.4, -21.8 / 2 + 2.6]];   // 16.6 apart
 r_pins_x = r_size[0] / 2 - 1.6;
 r_pins  = ["VBUS", "GND", "CC2", "CC1", "D-", "D+"];   // top to bottom
-r_usb_y = -1.3;   // the socket is off-centre
+r_usb_y = 0;      // the socket is about in the middle (test print)
 r_out   = 1.6;     // the socket sticks out past the board (measured)
 
 function usbc_breakout_red_size() = r_size;
 function usbc_breakout_red_usb_front() = -r_size[0] / 2 - r_out;   // x
 
 module usbc_breakout_red(headers = "none") {
-    pcb([r_size[0], r_size[1]], r_size[2], concat([for (h = r_holes) [h[0], h[1], 2.5, 3.8]],
+    pcb([r_size[0], r_size[1]], r_size[2], concat([for (h = r_holes) [h[0], h[1], 3.2, 5.0]],
         [for (i = [0:5]) [r_pins_x, (2.5 - i) * 2.54, 1.0, 1.6]]), [0.80, 0.12, 0.15], 0.6);
     translate([-r_size[0] / 2 - r_out, r_usb_y, r_size[2]]) rotate([0, 0, 90]) usb_c(c_size[0], c_size[1], c_size[2]);
     translate([0, 0, r_size[2]]) for (i = [0:5]) translate([r_pins_x - 1.3, (2.5 - i) * 2.54, 0]) silk(r_pins[i], 0.5, "right");
@@ -43,7 +43,7 @@ module usbc_breakout_red(headers = "none") {
 module usbc_breakout_red_usb_cutout(wall = 2, gap = 0, clear = 0.3, lip = 0.8) {
     bo_usb_cutout([-r_size[0] / 2 - r_out, r_usb_y], r_size[2] + c_size[1] / 2, 90, [c_size[0], c_size[1]], wall, gap, clear, [12.4, 6.6], lip);
 }
-module usbc_breakout_red_holder(h = 3, style = "peg") { bo_mounts(r_holes, 2.5, r_size[2], h, style); }
+module usbc_breakout_red_holder(h = 3, style = "peg") { bo_mounts(r_holes, 3.2, r_size[2], h, style); }
 
 // ====================================================================== green
 g_size  = [12.0, 13.8, 1.6];
