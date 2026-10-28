@@ -19,7 +19,7 @@ CATS = {
     "sensors": ("Sensors", "Small I2C sensor boards: climate, light, current, ADC, distance, hall."),
     "inputs": ("Inputs", "Things you press, touch or turn."),
     "boards": ("Other boards", "Bluetooth, an MP3 player, LED boards, a stepper driver, USB-C breakouts."),
-    "power": ("Power", "Chargers, power bank boards, DC-DC converters and a voltmeter."),
+    "power": ("Power", "Chargers, power bank boards, DC-DC converters, a voltmeter and an electronic load."),
     "hardware": ("Hardware", "Batteries and holders, and parts that go in a panel."),
 }
 # here, but not boards I have
@@ -68,6 +68,7 @@ INFO = {
     "usb_stepupdown_xyup": ("XY-UP USB step-up/down", "typical"),
     "buckboost_lcd_zksjva": ("ZK-SJVA-4X buck-boost with LCD", "typical"),
     "voltmeter_028": ('0.28" voltmeter', "typical"),
+    "zk_fx35": ("ZK-FX35 electronic load / battery tester", "measured"),
     "batteries": ("Batteries and holders", "typical"),
     "panel_parts": ("Panel parts", "typical"),
 }

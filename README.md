@@ -4,7 +4,7 @@
 
 ![Some of the modules](images/overview.png)
 
-- 41 files covering the boards, displays, sensors, power modules, batteries and panel parts I own
+- 42 files covering the boards, displays, sensors, power modules, batteries and panel parts I own
 - Each board looks like the real one: chips, resistors, capacitors, LEDs, connectors and pin labels
 - Fast mode (`detail = false`) shows only what matters for fit, for quick previews of big cases
 - A holder for every board: posts for its holes, or a ledge with low walls, or a press-fit tray
@@ -116,7 +116,7 @@ Open a category to see its modules; a module's folder has its pictures, sizes an
 </details>
 
 <details>
-<summary><b><a href="power/">Power</a></b>: Chargers, power bank boards, DC-DC converters and a voltmeter.</summary>
+<summary><b><a href="power/">Power</a></b>: Chargers, power bank boards, DC-DC converters, a voltmeter and an electronic load.</summary>
 
 | Module | Picture |
 |---|---|
@@ -129,6 +129,7 @@ Open a category to see its modules; a module's folder has its pictures, sizes an
 | ○ [XY-UP USB step-up/down](power/usb_stepupdown_xyup/) | <img src="power/usb_stepupdown_xyup/usb_stepupdown_xyup.png" width="200"> |
 | ○ [ZK-SJVA-4X buck-boost with LCD](power/buckboost_lcd_zksjva/) | <img src="power/buckboost_lcd_zksjva/buckboost_lcd_zksjva.png" width="200"> |
 | ○ [0.28" voltmeter](power/voltmeter_028/) | <img src="power/voltmeter_028/voltmeter_028.png" width="200"> |
+| ✓ [ZK-FX35 electronic load / battery tester](power/zk_fx35/) | <img src="power/zk_fx35/zk_fx35.png" width="200"> |
 | ○ [IP5306 charge/discharge board (MH-CD42)](power/ip5306_mhcd42/) (not one I have) | <img src="power/ip5306_mhcd42/ip5306_mhcd42.png" width="200"> |
 
 </details>

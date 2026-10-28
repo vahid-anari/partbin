@@ -1,6 +1,6 @@
 # Power
 
-Chargers, power bank boards, DC-DC converters and a voltmeter.
+Chargers, power bank boards, DC-DC converters, a voltmeter and an electronic load.
 
 ✓ measured with calipers · ◐ from a published drawing or the listing's sizes · ○ typical, from photos (to be measured)
 
@@ -15,6 +15,7 @@ Chargers, power bank boards, DC-DC converters and a voltmeter.
 | ○ [XY-UP USB step-up/down](usb_stepupdown_xyup/) | <img src="usb_stepupdown_xyup/usb_stepupdown_xyup.png" width="200"> |
 | ○ [ZK-SJVA-4X buck-boost with LCD](buckboost_lcd_zksjva/) | <img src="buckboost_lcd_zksjva/buckboost_lcd_zksjva.png" width="200"> |
 | ○ [0.28" voltmeter](voltmeter_028/) | <img src="voltmeter_028/voltmeter_028.png" width="200"> |
+| ✓ [ZK-FX35 electronic load / battery tester](zk_fx35/) | <img src="zk_fx35/zk_fx35.png" width="200"> |
 | ○ [IP5306 charge/discharge board (MH-CD42)](ip5306_mhcd42/) (not one I have) | <img src="ip5306_mhcd42/ip5306_mhcd42.png" width="200"> |
 
 ---
